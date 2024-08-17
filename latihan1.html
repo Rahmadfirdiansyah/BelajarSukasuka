@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ infokan }}</h1>
+      <h2>Daftar Makanan Gratis</h2>
+      <ul>
+        <li v-for="sarapanpagi in sarapan" :key="sarapanpagi.id">
+          {{ sarapanpagi.id }}
+          <ul>
+            <li v-for="pesanan in sarapanpagi.makanan" :key="pesanan">
+              {{ pesanan }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Daftar murid terbodoh</h3>
+      <ul>
+        <li v-for="nakal in murid" :key="nakal.nama">
+          <span v-if="nakal.nilai < 70">
+            nama: {{ nakal.nama }} nilai: {{ nakal.nilai }}
+          </span>
+        </li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      const app = createApp({
+        data() {
+          return {
+            infokan: "Hello Vue!",
+            murid: [
+              {
+                nama: "ilham",
+                nilai: "87",
+              },
+              {
+                nama: "cakmad",
+                nilai: "50",
+              },
+              {
+                nama: "alvin",
+                nilai: "59",
+              },
+              {
+                nama: "shandy",
+                nilai: "89",
+              },
+            ],
+            sarapan: [
+              {
+                id: "1",
+                makanan: ["soto", "teh"],
+              },
+              {
+                id: "2",
+                makanan: ["buryam", "cola"],
+              },
+              {
+                id: "3",
+                makanan: ["mie ayam", "marimas"],
+              },
+            ],
+          };
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
+

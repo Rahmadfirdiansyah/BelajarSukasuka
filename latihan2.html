@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile LEGEN</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Penambahan</h1>
+      <p>{{ angkaTogel }}</p>
+      <button @click="tambahTogel">Tambah++</button>
+      <hr />
+      <p v-if="karakterList.length === 0">There are no karakters</p>
+      <ul v-else-if="karakterList.length % 2 === 0">
+        <li v-for="karakter in karakterList" :key="karakter.name">
+          {{ karakter.name }}
+        </li>
+      </ul>
+      <p>
+        <span v-for="(karakter, index) in karakterList" :key="karakter.name">
+          {{ karakter.name }}{{ index === karakterList.length - 1 ? '' : ', ' }}
+        </span>
+      </p>
+      <p v-else>There are odd karakters!</p>
+
+      <h2>Tak cobae</h2>
+      <ul>
+        <li v-for="hero in karakterList" :key="hero.name">{{ hero.name }}</li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            angkaTogel: 1,
+            karakterList: [
+              { name: "Miya" },
+              { name: "Sun" },
+              { name: "Clint" },
+              { name: "Ruby" },
+            ],
+          };
+        },
+        methods: {
+          tambahTogel() {
+            this.angkaTogel++;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
